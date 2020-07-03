@@ -1,0 +1,13 @@
+galaxy_info:
+  author: digimokan
+  description: "Configure the system sudo utility"
+  license: "MIT"
+  min_ansible_version: 2.5
+  platforms:
+    - name: Archlinux
+      versions:
+        - all
+  galaxy_tags:
+    - archlinux
+    - sudo
+
