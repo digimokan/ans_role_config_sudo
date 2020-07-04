@@ -1,6 +1,6 @@
 # ans-role-config-sudo
 
-Configure the system `sudo` utility.
+Ansible role to configure the system `sudo` utility.
 
 [![Release](https://img.shields.io/github/release/digimokan/ans-role-config-sudo.svg?label=release)](https://github.com/digimokan/ans-role-config-sudo/releases/latest "Latest Release Notes")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?label=license)](LICENSE.md "Project License")
