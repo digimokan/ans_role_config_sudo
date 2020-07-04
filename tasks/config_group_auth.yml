@@ -7,6 +7,7 @@
       %{{ config_sudo_group }} ALL=(ALL) ALL
     validate: >-
       visudo --check --file=%s
+    firstmatch: yes
     state: present
   become: true
   become_user: root
