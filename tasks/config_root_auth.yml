@@ -4,7 +4,7 @@
     regexp: >-
       ^#?\s*root \w+=
     line: >-
-      root ALL=(ALL) ALL
+      root ALL=ALL) ALL
     validate: >-
       visudo --check --file=%s
     state: present
