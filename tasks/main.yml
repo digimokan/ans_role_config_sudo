@@ -1,3 +1,7 @@
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml
 
+- name: "Grant full sudo authority for user 'root'"
+  include_tasks: config_root_auth.yml
+  when: config_sudo_full_root_authority
+

@@ -1,0 +1,13 @@
+- name: "Set full auth for user 'root' in {{ config_sudo_sudoers_file }}"
+  lineinfile:
+    path: "{{ config_sudo_sudoers_file }}"
+    regexp: >-
+      ^#?root=
+    line: >-
+      root ALL=(ALL) ALL
+    validate: >-
+      visudo --check --file=%s
+    state: present
+  become: true
+  become_user: root
+
