@@ -58,9 +58,13 @@ Ansible role to configure the system `sudo` utility.
 
 ## Role Options
 
-See the role `defaults` file for full listing:
+See the role `defaults` file, for overridable vars:
 
   * [defaults/main.yml](../defaults/main.yml)
+
+Define these _optional_ vars for the role:
+
+  * `config_sudo_group`: a group to grant full sudo authorization to
 
 ## Contributing
 

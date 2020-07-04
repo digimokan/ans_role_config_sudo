@@ -1,6 +1,3 @@
-# group to grant sudo access to
-config_sudo_group: "wheel"
-
 # grant full authority to user 'root'
 config_sudo_full_root_authority: true
 

@@ -5,3 +5,7 @@
   include_tasks: config_root_auth.yml
   when: config_sudo_full_root_authority
 
+- name: "Grant full sudo authority for group '{{ config_sudo_group }}'"
+  include_tasks: config_group_auth.yml
+  when: config_sudo_group is defined
+
