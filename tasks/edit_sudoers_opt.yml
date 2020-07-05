@@ -8,4 +8,16 @@
     state: "{{ task_state }}"
   become: true
   become_user: root
+  when: task_state == 'present'
+
+- name: "{{ task_name }}"
+  lineinfile:
+    path: "{{ sudoers_file }}"
+    regexp: "{{ task_regexp }}"
+    validate: "{{ sudoers_validate_cmd }}"
+    firstmatch: yes
+    state: "{{ task_state }}"
+  become: true
+  become_user: root
+  when: task_state == 'absent'
 
