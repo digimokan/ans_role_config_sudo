@@ -64,7 +64,7 @@ See the role `defaults` file, for overridable vars:
 
 Define these _optional_ vars for the role:
 
-  * `config_sudo_group`: a group to grant full sudo authorization to
+  * `sudo_users_group`: a group to grant full sudo authorization to
 
 ## Contributing
 

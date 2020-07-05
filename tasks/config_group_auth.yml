@@ -1,10 +1,10 @@
-- name: "Set full auth for group '{{ config_sudo_group }}' in {{ config_sudo_sudoers_file }}"
+- name: "Set full auth for group '{{ sudo_users_group }}' in {{ config_sudo_sudoers_file }}"
   lineinfile:
     path: "{{ config_sudo_sudoers_file }}"
     regexp: >-
-      ^#?\s*%{{ config_sudo_group }} \w+=
+      ^#?\s*%{{ sudo_users_group }} \w+=
     line: >-
-      %{{ config_sudo_group }} ALL=(ALL) ALL
+      %{{ sudo_users_group }} ALL=(ALL) ALL
     validate: >-
       visudo --check --file=%s
     firstmatch: yes
