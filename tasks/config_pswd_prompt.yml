@@ -6,5 +6,4 @@
       ^#?\s*Defaults passwd_timeout=
     task_line: >-
       Defaults passwd_timeout={{ password_prompt_timeout_minutes }}
-    task_state: "present"
 

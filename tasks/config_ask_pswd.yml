@@ -6,5 +6,4 @@
       ^#?\s*Defaults timestamp_timeout=
     task_line: >-
       Defaults timestamp_timeout={{ ask_password_timeout }}
-    task_state: "present"
 
