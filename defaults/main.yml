@@ -10,3 +10,6 @@ disable_password_prompt_timeout: true
 # config file for sudo utility
 sudoers_file: "/etc/sudoers"
 
+# command to run to check that config file is in valid state
+sudoers_validate_cmd: "visudo --check --file=%s"
+
