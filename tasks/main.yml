@@ -3,6 +3,7 @@
 
 - name: "Grant full sudo authority for user 'root'"
   include_tasks: config_root_auth.yml
+  when: set_full_root_authority is defined
 
 - name: "Grant full sudo authority for group '{{ sudo_users_group }}'"
   include_tasks: config_group_auth.yml
@@ -10,7 +11,9 @@
 
 - name: "Set wait between sudo ask-password events"
   include_tasks: config_ask_pswd.yml
+  when: ask_password_timeout is defined
 
 - name: "Set number of minutes to timeout, when waiting for sudo password"
   include_tasks: config_pswd_prompt.yml
+  when: password_prompt_timeout_minutes is defined
 

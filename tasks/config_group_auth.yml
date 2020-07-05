@@ -1,14 +1,9 @@
-- name: "Set full auth for group '{{ sudo_users_group }}' in {{ sudoers_file }}"
-  lineinfile:
-    path: "{{ sudoers_file }}"
-    regexp: >-
+- name: "Set group auth"
+  include_tasks: edit_sudoers_opt.yml
+  vars:
+    task_name: "Set full auth for group '{{ sudo_users_group }}"
+    task_regexp: >-
       ^#?\s*%{{ sudo_users_group }} \w+=
-    line: >-
+    task_line: >-
       %{{ sudo_users_group }} ALL=(ALL) ALL
-    validate: >-
-      visudo --check --file=%s
-    firstmatch: yes
-    state: present
-  become: true
-  become_user: root
 

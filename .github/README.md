@@ -54,6 +54,11 @@ Ansible role to configure the system `sudo` utility.
        - name: "Install and configure sudo authorizations"
          include_role:
            name: config-sudo
+         vars:
+           set_full_root_authority: true
+           sudo_users_group: "wheel"
+           ask_password_timeout: 45
+           password_prompt_timeout_minutes: 0
    ```
 
 ## Role Options
@@ -65,6 +70,9 @@ See the role `defaults` file, for overridable vars:
 Define these _optional_ vars for the role:
 
   * `sudo_users_group`: a group to grant full sudo authorization to
+  * `set_full_root_authority`: bool, grant full authority to user 'root'
+  * `ask_password_timeout`: number of minutes sudo will wait between passwd asks
+  * `password_prompt_timeout_minutes`: on ask, timeout and abort after X minutes (0 for never)
 
 ## Contributing
 
