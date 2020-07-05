@@ -7,19 +7,4 @@
     task_line: >-
       root ALL=(ALL) ALL
     task_state: "{{ 'present' if set_full_root_authority else 'absent' }}"
-    # task_state: "absent"
-
-# - name: "Set full auth for user 'root' in {{ sudoers_file }}"
-#   lineinfile:
-#     path: "{{ sudoers_file }}"
-#     regexp: >-
-#       ^#?\s*root \w+=
-#     line: >-
-#       root ALL=(ALL) ALL
-#     validate: >-
-#       visudo --check --file=%s
-#     firstmatch: yes
-#     state: present
-#   become: true
-#   become_user: root
 

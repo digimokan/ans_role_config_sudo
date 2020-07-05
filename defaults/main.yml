@@ -1,9 +1,5 @@
 # grant full authority to user 'root'
-# set_full_root_authority: true
-
-
-
-set_full_root_authority: false
+set_full_root_authority: true
 
 # set the number of minutes sudo will wait before asking for password again
 ask_password_timeout: 45
