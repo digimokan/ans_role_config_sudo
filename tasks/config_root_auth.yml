@@ -1,6 +1,6 @@
-- name: "Set full auth for user 'root' in {{ config_sudo_sudoers_file }}"
+- name: "Set full auth for user 'root' in {{ sudoers_file }}"
   lineinfile:
-    path: "{{ config_sudo_sudoers_file }}"
+    path: "{{ sudoers_file }}"
     regexp: >-
       ^#?\s*root \w+=
     line: >-

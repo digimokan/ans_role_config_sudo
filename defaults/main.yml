@@ -1,6 +1,6 @@
 # grant full authority to user 'root'
-config_sudo_full_root_authority: true
+set_full_root_authority: true
 
 # config file for sudo utility
-config_sudo_sudoers_file: "/etc/sudoers"
+sudoers_file: "/etc/sudoers"
 
