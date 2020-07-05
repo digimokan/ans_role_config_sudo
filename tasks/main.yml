@@ -12,7 +12,6 @@
 - name: "Set wait between sudo ask-password events"
   include_tasks: config_ask_pswd.yml
 
-- name: "Disable password prompt timeout"
+- name: "Set number of minutes to timeout, when waiting for sudo password"
   include_tasks: config_pswd_prompt.yml
-  when: disable_password_prompt_timeout
 

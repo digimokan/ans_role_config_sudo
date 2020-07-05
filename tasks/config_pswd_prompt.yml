@@ -1,7 +1,7 @@
 - name: "Set password-prompt timeout"
   include_tasks: edit_sudoers_opt.yml
   vars:
-    task_name: "Set password-prompt timeout-minutes, when sudo asks for password"
+    task_name: "Set number of minutes to timeout, when sudo asks for password"
     task_regexp: >-
       ^#?\s*Defaults passwd_timeout=
     task_line: >-
