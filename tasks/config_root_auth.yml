@@ -6,7 +6,8 @@
       ^#?\s*root \w+=
     task_line: >-
       root ALL=(ALL) ALL
-    task_state: "{{ 'present' if set_full_root_authority else 'absent' }}"
+    # task_state: "{{ 'present' if set_full_root_authority else 'absent' }}"
+    task_state: "absent"
 
 # - name: "Set full auth for user 'root' in {{ sudoers_file }}"
 #   lineinfile:
