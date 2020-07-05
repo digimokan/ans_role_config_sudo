@@ -1,0 +1,14 @@
+- name: "Set number of minutes sudo will wait before asking for passwd again"
+  lineinfile:
+    path: "{{ sudoers_file }}"
+    regexp: >-
+      ^#?\s*Defaults timestamp_timeout=
+    line: >-
+      Defaults timestamp_timeout={{ ask_password_timeout }}
+    validate: >-
+      visudo --check --file=%s
+    firstmatch: yes
+    state: present
+  become: true
+  become_user: root
+

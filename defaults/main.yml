@@ -1,6 +1,9 @@
 # grant full authority to user 'root'
 set_full_root_authority: true
 
+# set the number of minutes sudo will wait before asking for password again
+ask_password_timeout: 45
+
 # when sudo asks for password, don't timeout after a few min and abort the cmd
 disable_password_prompt_timeout: true
 
