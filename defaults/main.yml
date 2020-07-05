@@ -4,8 +4,8 @@ set_full_root_authority: true
 # set the number of minutes sudo will wait before asking for password again
 ask_password_timeout: 45
 
-# when sudo asks for password, don't timeout after a few min and abort the cmd
-disable_password_prompt_timeout: true
+# when sudo asks for password, timeout & abort cmd after X minutes (0 for never)
+password_prompt_timeout_minutes: 0
 
 # config file for sudo utility
 sudoers_file: "/etc/sudoers"

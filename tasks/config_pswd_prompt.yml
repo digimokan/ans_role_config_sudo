@@ -1,23 +1,9 @@
-# - name: "Disable password-prompt timeout when sudo asks for password"
-#   lineinfile:
-#     path: "{{ sudoers_file }}"
-#     regexp: >-
-#       ^#?\s*Defaults passwd_timeout=
-#     line: >-
-#       Defaults passwd_timeout=0
-#     validate: >-
-#       visudo --check --file=%s
-#     firstmatch: yes
-#     state: present
-#   become: true
-#   become_user: root
-
-- name: "Install sudo utility"
+- name: "Set password-prompt timeout"
   include_tasks: edit_sudoers_opt.yml
   vars:
-    task_name: "Disable password-prompt timeout when sudo asks for password"
+    task_name: "Set password-prompt timeout-minutes, when sudo asks for password"
     task_regexp: >-
       ^#?\s*Defaults passwd_timeout=
     task_line: >-
-      Defaults passwd_timeout=0
+      Defaults passwd_timeout={{ password_prompt_timeout_minutes }}
 
