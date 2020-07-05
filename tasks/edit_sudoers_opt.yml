@@ -5,7 +5,9 @@
     line: "{{ task_line }}"
     validate: "{{ sudoers_validate_cmd }}"
     firstmatch: yes
-    state: present
+    state: "{{ task_state }}"
   become: true
   become_user: root
+  vars:
+    task_state: "present"
 

@@ -1,14 +1,24 @@
-- name: "Set full auth for user 'root' in {{ sudoers_file }}"
-  lineinfile:
-    path: "{{ sudoers_file }}"
-    regexp: >-
+- name: "Set root auth"
+  include_tasks: edit_sudoers_opt.yml
+  vars:
+    task_name: "Set full auth for user 'root': {{ set_full_root_authority }}"
+    task_regexp: >-
       ^#?\s*root \w+=
-    line: >-
+    task_line: >-
       root ALL=(ALL) ALL
-    validate: >-
-      visudo --check --file=%s
-    firstmatch: yes
-    state: present
-  become: true
-  become_user: root
+    task_state: "{{ 'present' if set_full_root_authority else 'absent' }}"
+
+# - name: "Set full auth for user 'root' in {{ sudoers_file }}"
+#   lineinfile:
+#     path: "{{ sudoers_file }}"
+#     regexp: >-
+#       ^#?\s*root \w+=
+#     line: >-
+#       root ALL=(ALL) ALL
+#     validate: >-
+#       visudo --check --file=%s
+#     firstmatch: yes
+#     state: present
+#   become: true
+#   become_user: root
 
