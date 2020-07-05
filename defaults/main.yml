@@ -1,6 +1,9 @@
 # grant full authority to user 'root'
 set_full_root_authority: true
 
+# when sudo asks for password, don't timeout after a few min and abort the cmd
+disable_password_prompt_timeout: true
+
 # config file for sudo utility
 sudoers_file: "/etc/sudoers"
 

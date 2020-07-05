@@ -1,0 +1,14 @@
+- name: "Disable password-prompt timeout when sudo asks for password"
+  lineinfile:
+    path: "{{ sudoers_file }}"
+    regexp: >-
+      ^#?\s*Defaults passwd_timeout=
+    line: >-
+      Defaults passwd_timeout=0
+    validate: >-
+      visudo --check --file=%s
+    firstmatch: yes
+    state: present
+  become: true
+  become_user: root
+
