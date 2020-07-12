@@ -3,7 +3,7 @@
   vars:
     task_name: "Set number of minutes sudo will wait before asking for passwd again"
     task_regexp: >-
-      ^#?\s*Defaults timestamp_timeout=
+      ^#?\s*Defaults timestamp_timeout\s*=
     task_line: >-
       Defaults timestamp_timeout={{ ask_password_timeout }}
 

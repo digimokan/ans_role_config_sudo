@@ -17,3 +17,7 @@
   include_tasks: config_pswd_prompt.yml
   when: password_prompt_timeout_minutes is defined
 
+- name: "Use root-user umask for file creation (not user's umask)"
+  include_tasks: set_root_umask.yml
+  when: use_root_umask is defined
+

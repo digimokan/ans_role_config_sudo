@@ -1,0 +1,20 @@
+- name: "Set sudo-command-umask to 0022 (same as root-user default umask)"
+  include_tasks: edit_sudoers_opt.yml
+  vars:
+    task_name: "Set sudo umask to 0022 (same as root's): {{ use_root_umask }}"
+    task_regexp: >-
+      ^#?\s*Defaults umask\s*=
+    task_line: >-
+      Defaults umask=0022
+    task_state: "{{ 'present' if use_root_umask else 'absent' }}"
+
+- name: "Make sudo always use its own sudo-command-umask"
+  include_tasks: edit_sudoers_opt.yml
+  vars:
+    task_name: "Make sudo always use sudo-command-umask: {{ use_root_umask }}"
+    task_regexp: >-
+      ^#?\s*Defaults umask_override
+    task_line: >-
+      Defaults umask_override
+    task_state: "{{ 'present' if use_root_umask else 'absent' }}"
+

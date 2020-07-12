@@ -73,6 +73,7 @@ Define these _optional_ vars for the role:
   * `set_full_root_authority`: bool, grant full authority to user 'root'
   * `ask_password_timeout`: number of minutes sudo will wait between passwd asks
   * `password_prompt_timeout_minutes`: on ask, timeout and abort after X minutes (0 for never)
+  * `use_root_umask`: make sudo use root-user umask (not user's) for file create
 
 ## Contributing
 
