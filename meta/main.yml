@@ -11,3 +11,12 @@ galaxy_info:
     - archlinux
     - sudo
 
+dependencies:
+  - src: https://github.com/digimokan/ans-role-shell-common
+    version: master
+    name: shell-common
+  - role: shell-common
+    vars:
+      user_name: "{{ sudo_user }}"
+    when: sudo_user is defined
+
