@@ -16,8 +16,6 @@ dependencies:
     version: master
     name: shell-common
     vars:
-      user_name: "admin"
-  # - role: shell-common
-      # user_name: "{{ sudo_user }}"
-    # when: sudo_user is defined
+      user_name: "{{ user_for_sudo_customization }}"
+    when: user_for_sudo_customization is defined
 

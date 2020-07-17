@@ -74,7 +74,7 @@ Define these _optional_ vars for the role:
   * `ask_password_timeout`: number of minutes sudo will wait between passwd asks
   * `password_prompt_timeout_minutes`: on ask, timeout and abort after X minutes (0 for never)
   * `use_root_umask`: make sudo use root-user umask (not user's) for file create
-  * `sudo_user`: a user to configure sudo shell options, etc for
+  * `user_for_sudo_customization`: user-name, for user-specific shell/env enhancements
 
 ## Contributing
 
