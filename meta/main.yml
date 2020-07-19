@@ -14,7 +14,6 @@ galaxy_info:
 dependencies:
   - src: https://github.com/digimokan/ans-role-shell-common
     version: master
-    name: shell-common
     vars:
       user_name: "{{ user_for_sudo_customization }}"
     when: user_for_sudo_customization is defined
