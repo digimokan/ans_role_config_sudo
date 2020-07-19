@@ -12,7 +12,7 @@ galaxy_info:
     - sudo
 
 dependencies:
-  - src: https://github.com/digimokan/ans-role-shell-common
+  - src: https://github.com/digimokan/ans-role-config-shell
     version: master
     vars:
       user_name: "{{ user_for_sudo_customization }}"
