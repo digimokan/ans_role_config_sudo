@@ -1,3 +1,7 @@
+- name: "Run all roles defined as dependencies"
+  include_tasks: run_dep_roles.yml
+  when: user_for_sudo_customization is defined
+
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml
 
