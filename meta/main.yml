@@ -11,6 +11,8 @@ galaxy_info:
     - archlinux
     - sudo
 
+allow_duplicates: false
+
 dependencies:
   - src: https://github.com/digimokan/ans-role-config-shell
     version: master
