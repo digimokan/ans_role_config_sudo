@@ -3,6 +3,8 @@
     name: ans-role-config-shell
     allow_duplicates: no
   vars:
-    user_name: "{{ user_for_sudo_customization }}"
-  when: user_for_sudo_customization is defined
+    user_name: "admin"
+  # vars:
+  #   user_name: "{{ user_for_sudo_customization }}"
+  # when: user_for_sudo_customization is defined
 
