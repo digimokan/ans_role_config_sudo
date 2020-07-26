@@ -1,5 +1,6 @@
-# - name: "Run all roles defined as dependencies"
-#   include_tasks: run_dep_roles.yml
+- name: "Run dependency-role: ans-role-config-shell"
+  include_tasks: run_config_shell_role.yml
+  when: config_shell_role_was_run is not defined
 
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml

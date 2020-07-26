@@ -18,8 +18,4 @@ dependencies:
     version: master
     tags:
       - never
-  - role: ans-role-config-shell
-    vars:
-      user_name: "{{ user_for_sudo_customization }}"
-    when: user_for_sudo_customization is defined
 
