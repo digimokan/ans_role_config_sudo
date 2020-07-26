@@ -1,7 +1,6 @@
-- name: "Run config-shell role for {{ user_for_sudo_customization | default('undefined') }}"
+- name: "Run config-shell role for {{ user_for_sudo_customization }}"
   include_role:
     name: ans-role-config-shell
   vars:
     user_name: "{{ user_for_sudo_customization }}"
-  when: user_for_sudo_customization is defined
 

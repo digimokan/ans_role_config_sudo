@@ -1,6 +1,6 @@
 - name: "Run dependency-role: ans-role-config-shell"
   include_tasks: run_config_shell_role.yml
-  when: ans_role_config_shell_"{{ user_for_sudo_customization }}"_role_was_run is not defined
+  when: user_for_sudo_customization is defined
 
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml
