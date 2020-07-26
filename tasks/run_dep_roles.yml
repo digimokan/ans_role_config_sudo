@@ -1,6 +1,6 @@
 - name: "Run config-shell role as dependency"
-  import_role:
-    name: ext/ans-role-config-shell
+  include_role:
+    name: ans-role-config-shell
   vars:
     user_name: "{{ user_for_sudo_customization }}"
   when: user_for_sudo_customization is defined
