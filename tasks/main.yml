@@ -1,11 +1,11 @@
-- name: "Run all roles defined as dependencies"
-  include_tasks: run_dep_roles.yml
+# - name: "Run all roles defined as dependencies"
+#   include_tasks: run_dep_roles.yml
 
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml
 
-# - name: "Grant full sudo authority for user 'root'"
-#   include_tasks: config_root_auth.yml
+- name: "Grant full sudo authority for user 'root'"
+  include_tasks: config_root_auth.yml
 
 - name: "Grant full sudo authority for group '{{ sudo_users_group }}'"
   include_tasks: config_group_auth.yml
