@@ -13,6 +13,10 @@
   include_tasks: config_group_auth.yml
   when: set_auth_for_group is defined
 
+- name: "Grant full sudo authority for user '{{ set_auth_for_user }}'"
+  include_tasks: config_user_auth.yml
+  when: set_auth_for_user is defined
+
 - name: "Set wait between sudo ask-password events"
   include_tasks: config_ask_pswd.yml
   when: ask_password_timeout is defined
