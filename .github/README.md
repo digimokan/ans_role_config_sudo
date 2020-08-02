@@ -55,10 +55,12 @@ Ansible role to configure the system `sudo` utility.
          include_role:
            name: config-sudo
          vars:
-           set_full_root_authority: true
-           sudo_users_group: "wheel"
+           use_full_root_auth: true
+           set_auth_for_group: "wheel"
            ask_password_timeout: 45
            password_prompt_timeout_minutes: 0
+           use_root_umask: true
+           user_for_sudo_aliases: "admin"
    ```
 
 ## Role Options
@@ -69,12 +71,12 @@ See the role `defaults` file, for overridable vars:
 
 Define these _optional_ vars for the role:
 
-  * `sudo_users_group`: a group to grant full sudo authorization to
-  * `set_full_root_authority`: bool, grant full authority to user 'root'
+  * `use_full_root_auth`: bool, grant full authority to user 'root'
+  * `set_auth_for_group`: a group to grant full sudo authorization to
   * `ask_password_timeout`: number of minutes sudo will wait between passwd asks
   * `password_prompt_timeout_minutes`: on ask, timeout and abort after X minutes (0 for never)
   * `use_root_umask`: make sudo use root-user umask (not user's) for file create
-  * `user_for_sudo_customization`: user-name, for user-specific shell/env enhancements
+  * `user_for_sudo_aliases`: user-name, for user-specific shell/env enhancements
 
 ## Contributing
 

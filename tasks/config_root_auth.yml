@@ -1,10 +1,10 @@
 - name: "Set root auth"
   include_tasks: edit_sudoers_opt.yml
   vars:
-    task_name: "Set full auth for user 'root': {{ set_full_root_authority }}"
+    task_name: "Set full auth for user 'root': {{ use_full_root_auth }}"
     task_regexp: >-
       ^#?\s*root \w+=
     task_line: >-
       root ALL=(ALL) ALL
-    task_state: "{{ 'present' if set_full_root_authority else 'absent' }}"
+    task_state: "{{ 'present' if use_full_root_auth else 'absent' }}"
 

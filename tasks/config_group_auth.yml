@@ -1,9 +1,9 @@
 - name: "Set group auth"
   include_tasks: edit_sudoers_opt.yml
   vars:
-    task_name: "Set full auth for group '{{ sudo_users_group }}"
+    task_name: "Set full auth for group '{{ set_auth_for_group }}"
     task_regexp: >-
-      ^#?\s*%{{ sudo_users_group }} \w+=
+      ^#?\s*%{{ set_auth_for_group }} \w+=
     task_line: >-
-      %{{ sudo_users_group }} ALL=(ALL) ALL
+      %{{ set_auth_for_group }} ALL=(ALL) ALL
 

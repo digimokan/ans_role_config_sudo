@@ -1,16 +1,17 @@
 - name: "Run dependency-role: ans-role-config-shell"
   include_tasks: run_config_shell_role.yml
-  when: user_for_sudo_customization is defined
+  when: user_for_sudo_aliases is defined
 
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml
 
 - name: "Grant full sudo authority for user 'root'"
   include_tasks: config_root_auth.yml
+  when: use_full_root_auth is defined
 
-- name: "Grant full sudo authority for group '{{ sudo_users_group }}'"
+- name: "Grant full sudo authority for group '{{ set_auth_for_group }}'"
   include_tasks: config_group_auth.yml
-  when: sudo_users_group is defined
+  when: set_auth_for_group is defined
 
 - name: "Set wait between sudo ask-password events"
   include_tasks: config_ask_pswd.yml

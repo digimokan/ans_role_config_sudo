@@ -1,6 +1,6 @@
-- name: "Run config-shell role for {{ user_for_sudo_customization }}"
+- name: "Run config-shell role for {{ user_for_sudo_aliases }}"
   include_role:
     name: ans-role-config-shell
   vars:
-    user_name: "{{ user_for_sudo_customization }}"
+    user_name: "{{ user_for_sudo_aliases }}"
 
