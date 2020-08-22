@@ -1,7 +1,8 @@
 - name: "Do not require sudo password for '{{ user_or_group_str }}' auth"
   set_fact:
     nopassword_opt: "NOPASSWORD: "
-  when: set_nopassword_auth is defined
+  when: (set_nopassword_auth is defined) and
+        (set_nopassword_auth)
 
 - name: "Limit '{{ user_or_group_str }}' auth to list of commands"
   set_fact:
