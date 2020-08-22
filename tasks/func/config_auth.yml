@@ -15,5 +15,5 @@
     task_regexp: >-
       ^#?\s*{{ user_or_group_str }} \w+=
     task_line: >-
-      {{ user_or_group_str }} ALL=(ALL) {{ allowed_cmds | default('ALL') }}
+      {{ user_or_group_str }} ALL=(ALL) {{ nopassword_opt | default('') }}{{ allowed_cmds | default('ALL') }}
 
