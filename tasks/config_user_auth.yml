@@ -1,9 +1,5 @@
-- name: "Set user auth"
-  include_tasks: edit_sudoers_opt.yml
+- name: "Set user '{{ set_auth_for_user }}' auth"
+  include_tasks: func/config_auth.yml
   vars:
-    task_name: "Set full auth for user '{{ set_auth_for_user }}"
-    task_regexp: >-
-      ^#?\s*{{ set_auth_for_user }} \w+=
-    task_line: >-
-      {{ set_auth_for_user }} ALL=(ALL) ALL
+    user_or_group_str: "{{ set_auth_for_user }}"
 

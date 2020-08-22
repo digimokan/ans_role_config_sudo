@@ -9,11 +9,17 @@
   include_tasks: config_root_auth.yml
   when: use_full_root_auth is defined
 
-- name: "Grant full sudo authority for group '{{ set_auth_for_group }}'"
+- name: "Check that 'set_auth_for_group' and 'set_auth_for_user' not both defined"
+  fail:
+    msg: "'set_auth_for_group' and 'set_auth_for_user' cannot both be defined"
+  when: (set_auth_for_group is defined) and
+        (set_auth_for_user is defined)
+
+- name: "Grant full/limited sudo authority for group '{{ set_auth_for_group }}'"
   include_tasks: config_group_auth.yml
   when: set_auth_for_group is defined
 
-- name: "Grant full sudo authority for user '{{ set_auth_for_user }}'"
+- name: "Grant full/limited sudo authority for user '{{ set_auth_for_user }}'"
   include_tasks: config_user_auth.yml
   when: set_auth_for_user is defined
 

@@ -1,0 +1,25 @@
+- name: "Check that limiting 'auth_cmd_list' and 'nopassword_cmd_list' not both defined"
+  fail:
+    msg: "'auth_cmd_list' and 'nopassword_cmd_list' cannot both be defined"
+  when: (auth_cmd_list is defined) and
+        (nopassword_cmd_list is defined)
+
+- name: "Define cmd-list to limit '{{ user_or_group_str }}' auth"
+  set_fact:
+    allowed_cmds: "{{ auth_cmd_list | join(',') }}"
+  when: auth_cmd_list is defined
+
+- name: "Define no-passwd-cmd-list to limit '{{ user_or_group_str }}' auth"
+  set_fact:
+    allowed_cmds: "NOPASSWORD: {{ nopassword_cmd_list | join(',') }}"
+  when: nopassword_cmd_list is defined
+
+- name: "Set '{{ user_or_group_str }}' full/limited auth"
+  include_tasks: func/edit_sudoers_opt.yml
+  vars:
+    task_name: "Set full/limited auth for '{{ user_or_group_str }}"
+    task_regexp: >-
+      ^#?\s*{{ user_or_group_str }} \w+=
+    task_line: >-
+      {{ user_or_group_str }} ALL=(ALL) {{ allowed_cmds | default('ALL') }}
+

@@ -1,5 +1,5 @@
 - name: "Set time between sudo password asks"
-  include_tasks: edit_sudoers_opt.yml
+  include_tasks: func/edit_sudoers_opt.yml
   vars:
     task_name: "Set number of minutes sudo will wait before asking for passwd again"
     task_regexp: >-

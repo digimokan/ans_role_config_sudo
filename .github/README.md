@@ -72,13 +72,21 @@ See the role `defaults` file, for overridable vars:
 
 Define these _optional_ vars for the role:
 
-  * `use_full_root_auth`: bool, grant full authority to user 'root'
-  * `set_auth_for_group`: a group to grant full sudo authorization to
-  * `set_auth_for_user`: a user to grant full sudo authorization to
-  * `ask_password_timeout`: number of minutes sudo will wait between passwd asks
-  * `password_prompt_timeout_minutes`: on ask, timeout and abort after X minutes (0 for never)
-  * `use_root_umask`: make sudo use root-user umask (not user's) for file create
-  * `user_for_sudo_aliases`: user-name, for user-specific shell/env enhancements
+  * `use_full_root_auth`: [boolean] grant full authority to user 'root'
+  * `set_auth_for_group`: [boolean] a group to grant full sudo authorization to
+  * `set_auth_for_user`: [boolean] a user to grant full sudo authorization to
+  * `auth_cmd_list`: [list] for group-auth or user-auth, authorize only a list
+    of cmds
+  * `nopassword_cmd_list`: [list] for group-auth or user-auth, authorize only a
+    list of cmds that do not require password
+  * `ask_password_timeout`: [int] number of minutes sudo will wait between
+    passwd asks
+  * `password_prompt_timeout_minutes`: [int] on ask, timeout and abort after X
+    minutes (0 for never)
+  * `use_root_umask`: [boolean] make sudo use root-user umask (not user's) for
+    file create
+  * `user_for_sudo_aliases`: [string] user-name, for user-specific shell/env
+    enhancements
 
 ## Contributing
 

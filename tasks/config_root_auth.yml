@@ -1,5 +1,5 @@
 - name: "Set root auth"
-  include_tasks: edit_sudoers_opt.yml
+  include_tasks: func/edit_sudoers_opt.yml
   vars:
     task_name: "Set full auth for user 'root': {{ use_full_root_auth }}"
     task_regexp: >-
