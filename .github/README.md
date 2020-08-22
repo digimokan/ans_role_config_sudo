@@ -77,8 +77,7 @@ Define these _optional_ vars for the role:
   * `set_auth_for_user`: [boolean] a user to grant full sudo authorization to
   * `auth_cmd_list`: [list] for group-auth or user-auth, authorize only a list
     of cmds
-  * `nopassword_cmd_list`: [list] for group-auth or user-auth, authorize only a
-    list of cmds that do not require password
+  * `set_nopassword_auth`: [boolean] do not require sudo password for group/user
   * `ask_password_timeout`: [int] number of minutes sudo will wait between
     passwd asks
   * `password_prompt_timeout_minutes`: [int] on ask, timeout and abort after X
