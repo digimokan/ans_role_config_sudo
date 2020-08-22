@@ -1,8 +1,7 @@
-- name: "Do not require sudo password for '{{ user_or_group_str }}' auth"
+- name: "Require sudo password for '{{ user_or_group_str }}' auth: {{ not set_nopassword_auth }}"
   set_fact:
-    nopassword_opt: "NOPASSWORD: "
-  when: (set_nopassword_auth is defined) and
-        set_nopassword_auth
+    nopassword_opt: "{{ 'NOPASSWORD: ' if set_nopassword_auth else '' }}"
+  when: set_nopassword_auth is defined
 
 - name: "Limit '{{ user_or_group_str }}' auth to list of commands"
   set_fact:
@@ -16,5 +15,5 @@
     task_regexp: >-
       ^#?\s*{{ user_or_group_str }} \w+=
     task_line: >-
-      {{ user_or_group_str }} ALL=(ALL) {{ nopassword_opt | default('') }}{{ allowed_cmds | default('ALL') }}
+      {{ user_or_group_str }} ALL=(ALL) {{ nopassword_opt }}{{ allowed_cmds | default('ALL') }}
 
