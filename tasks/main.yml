@@ -1,6 +1,6 @@
 - name: "Run dependency-role: ans-role-config-shell"
   include_tasks: run_config_shell_role.yml
-  when: user_for_sudo_aliases is defined
+  when: user_for_shell_enhancements is defined
 
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml
@@ -30,4 +30,8 @@
 - name: "Use root-user umask for file creation (not user's umask)"
   include_tasks: set_root_umask.yml
   when: use_root_umask is defined
+
+- name: "Set sudo-alias shell enhancement for user '{{ user_for_shell_enhancements }}'"
+  include_tasks: set_sudo_alias.yml
+  when: user_for_shell_enhancements is defined
 

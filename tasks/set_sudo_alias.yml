@@ -1,0 +1,8 @@
+- name: "Add sudo command alias for user '{{ user_for_shell_enhancements }}'"
+  include_role:
+    name: ans-role-config-shell
+    tasks_from: inc/add_common_interactive_lines.yml
+  vars:
+    description: "sudo command alias for '{{ user_for_shell_enhancements }}'"
+    config_lines: "alias sudo='sudo '"
+
