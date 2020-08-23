@@ -5,10 +5,6 @@
 - name: "Install sudo utility"
   include_tasks: install_sudo.yml
 
-- name: "Grant full sudo authority for user 'root'"
-  include_tasks: config_root_auth.yml
-  when: use_full_root_auth is defined
-
 - name: "Check that 'set_auth_for_group' and 'set_auth_for_user' not both defined"
   fail:
     msg: "'set_auth_for_group' and 'set_auth_for_user' cannot both be defined"

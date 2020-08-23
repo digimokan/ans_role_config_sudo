@@ -72,7 +72,6 @@ See the role `defaults` file, for overridable vars:
 
 Define these _optional_ vars for the role:
 
-  * `use_full_root_auth`: [boolean] grant full authority to user 'root'
   * `set_auth_for_group`: [boolean] a group to grant full sudo authorization to
   * `set_auth_for_user`: [boolean] a user to grant full sudo authorization to
   * `enable_sudo_auth`: [boolean] if 'false', will disable all sudo auth for the
@@ -87,8 +86,8 @@ Define these _optional_ vars for the role:
     minutes (0 for never)
   * `use_root_umask`: [boolean] make sudo use root-user umask (not user's) for
     file create
-  * `user_for_sudo_aliases`: [string] user-name, for user-specific shell/env
-    enhancements
+  * `user_for_sudo_aliases`: [string] user-name, to set up user-specific
+    shell/env enhancements
 
 ## Contributing
 
