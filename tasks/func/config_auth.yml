@@ -15,7 +15,7 @@
 - name: "Set '{{ user_or_group_str }}' full/limited auth"
   include_tasks: func/edit_sudoers_opt.yml
   vars:
-    task_name: "Set full/limited auth for '{{ user_or_group_str }}"
+    task_name: "Set full/limited auth for '{{ user_or_group_str }}'"
     task_regexp: >-
       ^#?\s*{{ user_or_group_str }} \w+=
     task_line: >-

@@ -1,8 +1,19 @@
+- name: "Initialize sudo_was_installed, to track when role has been run"
+  set_fact:
+    sudo_was_installed: false
+  when: sudo_was_installed is not defined
+
 - name: "Install sudo package"
-  pacman:
-    name: sudo
-    state: present
-  become: true
-  become_user: root
-  when: ansible_os_family == "Archlinux"
+  block:
+    - name: "Install sudo package for Arch Linux"
+      pacman:
+        name: sudo
+        state: present
+      become: true
+      become_user: root
+      when: ansible_os_family == "Archlinux"
+    - name: "Set sudo_was_installed, to track when role has been run"
+      set_fact:
+        sudo_was_installed: true
+  when: not sudo_was_installed
 
