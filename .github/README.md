@@ -10,14 +10,16 @@ Ansible role to configure the system `sudo` utility.
 * [Purpose](#purpose)
 * [Supported Operating Systems](#supported-operating-systems)
 * [Quick Start](#quick-start)
-    * [Load Role Via `ansible-galaxy` Command](#load-role-via-ansible-galaxy-command)
+    * [Use From Playbook](#use-from-playbook)
 * [Role Options](#role-options)
+* [Role Dependencies](#role-dependencies)
 * [Contributing](#contributing)
 
 ## Purpose
 
 * Install `sudo`.
 * Configure authorized `sudo` users, groups, ip-addresses, etc.
+* Configure general `sudo` command settings.
 
 ## Supported Operating Systems
 
@@ -25,7 +27,7 @@ Ansible role to configure the system `sudo` utility.
 
 ## Quick Start
 
-### Load Role Via `ansible-galaxy` Command
+### Use From Playbook
 
 1. Create `requirements.yml` in ansible project root, and add this content:
 
@@ -51,17 +53,14 @@ Ansible role to configure the system `sudo` utility.
    - hosts: localhost
      connection: local
      tasks:
-       - name: "Install and configure sudo authorizations"
+       - name: "Configure sudo root-user and general settings"
          include_role:
            name: config-sudo
          vars:
-           use_full_root_auth: true
-           set_auth_for_group: "wheel"
-           set_auth_for_user: "admin"
+           set_auth_for_user: "root"
            ask_password_timeout: 45
            password_prompt_timeout_minutes: 0
            use_root_umask: true
-           user_for_sudo_aliases: "admin"
    ```
 
 ## Role Options
@@ -88,6 +87,10 @@ Define these _optional_ vars for the role:
     file create
   * `user_for_shell_enhancements`: [string] user-name, to set up user-specific
     alias/etc shell enhancements
+
+## Role Dependencies
+
+* [ans-role-config-shell](https://github.com/digimokan/ans-role-config-shell)
 
 ## Contributing
 
