@@ -75,6 +75,8 @@ Define these _optional_ vars for the role:
   * `use_full_root_auth`: [boolean] grant full authority to user 'root'
   * `set_auth_for_group`: [boolean] a group to grant full sudo authorization to
   * `set_auth_for_user`: [boolean] a user to grant full sudo authorization to
+  * `enable_sudo_auth`: [boolean] if 'false', will disable all sudo auth for the
+    user/group (defaults to 'true')
   * `auth_cmd_list`: [list] for group-auth or user-auth, authorize only a list
     of cmds
   * `req_sudo_password`: [boolean] require sudo password for group/user

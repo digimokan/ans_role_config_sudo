@@ -1,3 +1,7 @@
+- name: "Enable '{{ user_or_group_str }}' sudo auth: {{ enable_sudo_auth | default(true) }}"
+  set_fact:
+    enable_auth: "{{ enable_sudo_auth | default(true) }}"
+
 - name: "Require sudo password for '{{ user_or_group_str }}' auth: {{ req_sudo_password }}"
   set_fact:
     nopassword_opt: "{{ '' if req_sudo_password else 'NOPASSWD: ' }}"
@@ -16,4 +20,5 @@
       ^#?\s*{{ user_or_group_str }} \w+=
     task_line: >-
       {{ user_or_group_str }} ALL=(ALL) {{ nopassword_opt | default('') }}{{ allowed_cmds | default('ALL') }}
+    task_state: "{{ 'present' if enable_auth else 'absent' }}"
 
