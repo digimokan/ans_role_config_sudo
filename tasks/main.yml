@@ -11,11 +11,11 @@
   when: (set_auth_for_group is defined) and
         (set_auth_for_user is defined)
 
-- name: "Check that user/group is not 'root'"
-  fail:
-    msg: "role does not yet support configuring auth for user/group 'root'"
-  when: ((set_auth_for_group is defined) and (set_auth_for_group == 'root')) or
-        ((set_auth_for_user is defined) and (set_auth_for_user == 'root'))
+# - name: "Check that user/group is not 'root'"
+#   fail:
+#     msg: "role does not yet support configuring auth for user/group 'root'"
+#   when: ((set_auth_for_group is defined) and (set_auth_for_group == 'root')) or
+#         ((set_auth_for_user is defined) and (set_auth_for_user == 'root'))
 
 - name: "Grant full/limited sudo authority for group '{{ set_auth_for_group }}'"
   include_tasks: config_group_auth.yml
