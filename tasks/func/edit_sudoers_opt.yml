@@ -8,12 +8,20 @@
   become: true
   become_user: root
 
-- name: "Validate combined {{ sudoers_file_path }} and {{ sudoers_d_file_path }} changes"
-  include_tasks: func/validate_all_parts.yml
-
-- name: "Edit in place {{ sudoers_d_file_path }}: {{ description }}"
-  include_tasks: func/edit_opt.yml
+- name: "{{ sudoers_d_file_path }}: {{ description }}"
+  blockinfile:
+    path: "{{ sudoers_d_file_path }}"
+    insertafter: EOF
+    block: "{{ config_lines }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: {{ description }}"
+    create: yes
+    state: "{{ task_state }}"
+    owner: "{{ sudoers_file_owner }}"
+    group: "{{ sudoers_file_group }}"
+    mode: "{{ sudoers_file_mode }}"
+    validate: "{{ sudoers_validate_cmd }}"
+  become: true
+  become_user: root
   vars:
-    task_name: "{{ sudoers_d_file_path }}: {{ description }}"
-    file_path: "{{ sudoers_d_file_path }}"
+    task_state: "present"
 
