@@ -1,13 +1,3 @@
-- name: "Create empty {{ sudoers_d_file_path }} file if not exist"
-  file:
-    path: "{{ sudoers_d_file_path }}"
-    state: touch
-    owner: "{{ sudoers_file_owner }}"
-    group: "{{ sudoers_file_group }}"
-    mode: "{{ sudoers_file_mode }}"
-  become: true
-  become_user: root
-
 - name: "{{ sudoers_d_file_path }}: {{ description }}"
   blockinfile:
     path: "{{ sudoers_d_file_path }}"
