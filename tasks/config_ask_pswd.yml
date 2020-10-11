@@ -2,7 +2,7 @@
   include_tasks: func/edit_sudoers_opt.yml
   vars:
     description: "set password wait-period before ask again"
+    # Defaults timestamp_timeout={{ ask_password_timeout }}
     config_lines: >-
-      # Defaults timestamp_timeout={{ ask_password_timeout }}
       Defts timestamp_timeout={{ ask_password_timeout }}
 
