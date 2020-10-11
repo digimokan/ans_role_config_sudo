@@ -10,15 +10,10 @@
 
 - name: "Validate combined {{ sudoers_file_path }} and {{ sudoers_d_file_path }} changes"
   include_tasks: func/validate_all_parts.yml
-  vars:
-    description: "{{ description }}"
-    config_lines: "{{ config_lines }}"
 
 - name: "Edit in place {{ sudoers_d_file_path }}: {{ description }}"
   include_tasks: func/edit_opt.yml
   vars:
     task_name: "{{ sudoers_d_file_path }}: {{ description }}"
     file_path: "{{ sudoers_d_file_path }}"
-    description: "{{ description }}"
-    config_lines: "{{ config_lines }}"
 

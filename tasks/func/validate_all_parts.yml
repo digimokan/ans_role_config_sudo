@@ -42,8 +42,6 @@
   vars:
     task_name: "Edit temp {{ sudoers_d_file_path }} option"
     file_path: "{{ sudoers_temp_dir }}/part2"
-    description: "{{ description }}"
-    config_lines: "{{ config_lines }}"
 
 - name: "Assemble and validate {{ sudoers_temp_validation_file_path }}"
   assemble:
