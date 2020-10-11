@@ -1,9 +1,12 @@
 - name: "Set password-prompt timeout"
   include_tasks: func/edit_sudoers_opt.yml
   vars:
-    task_name: "Set number of minutes to timeout, when sudo asks for password"
-    task_regexp: >-
-      ^#?\s*Defaults passwd_timeout\s*=
-    task_line: >-
+    description: "set timeout-quit after asking for password"
+    # task_name: "Set number of minutes to timeout, when sudo asks for password"
+    # task_regexp: >-
+    #   ^#?\s*Defaults passwd_timeout\s*=
+    # task_line: >-
+      # Defaults passwd_timeout={{ password_prompt_timeout_minutes }}
+    config_lines: >-
       Defaults passwd_timeout={{ password_prompt_timeout_minutes }}
 

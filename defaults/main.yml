@@ -1,6 +1,25 @@
 # config file for sudo utility
-sudoers_file: "/etc/sudoers"
+sudoers_file_path: "/etc/sudoers"
+
+# config filename for sudo utility
+sudoers_d_file_path: "/etc/sudoers.d/ansible_cfg"
+
+# file owner for sudo config files
+sudoers_file_owner: 'root'
+
+# file group for sudo config files
+sudoers_file_group: 'root'
+
+# file mode for sudo config files
+sudoers_file_mode: '440'
 
 # command to run to check that config file is in valid state
 sudoers_validate_cmd: "visudo --check --file=%s"
+# sudoers_validate_cmd: "visudo --check --file=/etc/sudoers"
+
+# temp dir for assembling/validating sudo files
+sudoers_temp_dir: "/tmp/{{ role_name }}_parts"
+
+# temp dir for assembling/validating sudo files
+sudoers_temp_validation_file_path: "/tmp/{{ role_name }}_validation_file"
 

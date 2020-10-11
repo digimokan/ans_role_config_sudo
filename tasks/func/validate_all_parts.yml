@@ -1,0 +1,55 @@
+- name: "Delete existing {{ sudoers_temp_dir }} if it exists"
+  file:
+    path: "{{ sudoers_temp_dir }}"
+    state: absent
+  become: true
+  become_user: root
+
+- name: "Create new {{ sudoers_temp_dir }}"
+  file:
+    path: "{{ sudoers_temp_dir }}"
+    state: directory
+    mode: '0755'
+  become: true
+  become_user: root
+
+- name: "Copy {{ sudoers_file_path }} to temp dir"
+  copy:
+    src: "{{ sudoers_file_path }}"
+    dest: "{{ sudoers_temp_dir }}/part1"
+    force: yes
+  become: true
+  become_user: root
+
+- name: "Remove {{ sudoers_file_path }} 'include sudoers_d' directive"
+  lineinfile:
+    path: "{{ sudoers_temp_dir }}/part1"
+    state: absent
+    regexp: 'includedir /etc/sudoers.d'
+  become: true
+  become_user: root
+
+- name: "Copy {{ sudoers_d_file_path }} to temp dir"
+  copy:
+    src: "{{ sudoers_d_file_path }}"
+    dest: "{{ sudoers_temp_dir }}/part2"
+    force: yes
+  become: true
+  become_user: root
+
+- name: "Edit new opt in temp dir {{ sudoers_d_file_path }}"
+  include_tasks: func/edit_opt.yml
+  vars:
+    task_name: "Edit temp {{ sudoers_d_file_path }} option"
+    file_path: "{{ sudoers_temp_dir }}/part2"
+    description: "{{ description }}"
+    config_lines: "{{ config_lines }}"
+
+- name: "Assemble and validate {{ sudoers_temp_validation_file_path }}"
+  assemble:
+    src: "{{ sudoers_temp_dir }}"
+    dest: "{{ sudoers_temp_validation_file_path }}"
+    validate: "{{ sudoers_validate_cmd }}"
+  become: true
+  become_user: root
+

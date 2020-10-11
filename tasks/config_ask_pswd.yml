@@ -1,9 +1,12 @@
 - name: "Set time between sudo password asks"
   include_tasks: func/edit_sudoers_opt.yml
   vars:
-    task_name: "Set number of minutes sudo will wait before asking for passwd again"
-    task_regexp: >-
-      ^#?\s*Defaults timestamp_timeout\s*=
-    task_line: >-
+    # task_name: "Set number of minutes sudo will wait before asking for passwd again"
+    description: "set password wait-period before ask again"
+    # task_regexp: >-
+    #   ^#?\s*Defaults timestamp_timeout\s*=
+    # task_line: >-
+    #   Defaults timestamp_timeout={{ ask_password_timeout }}
+    config_lines: >-
       Defaults timestamp_timeout={{ ask_password_timeout }}
 
