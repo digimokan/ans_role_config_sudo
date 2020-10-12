@@ -18,7 +18,7 @@ Ansible role to configure the system `sudo` utility.
 ## Purpose
 
 * Install `sudo`.
-* Configure authorized `sudo` users, groups, ip-addresses, etc.
+* Configure authorized `sudo` users, groups, etc.
 * Configure general `sudo` command settings.
 
 ## Supported Operating Systems
@@ -57,7 +57,7 @@ Ansible role to configure the system `sudo` utility.
          include_role:
            name: config-sudo
          vars:
-           set_auth_for_user: "root"
+           set_auth_for_user: "wheel"
            ask_password_timeout: 45
            password_prompt_timeout_minutes: 0
            use_root_umask: true
@@ -72,7 +72,9 @@ See the role `defaults` file, for overridable vars:
 Define these _optional_ vars for the role:
 
   * `set_auth_for_group`: [boolean] a group to grant full sudo authorization to
+    (_NOTE_: mutually exclusive with `set_auth_for_user`)
   * `set_auth_for_user`: [boolean] a user to grant full sudo authorization to
+    (_NOTE_: mutually exclusive with `set_auth_for_group`)
   * `enable_sudo_auth`: [boolean] if 'false', will disable all sudo auth for the
     user/group (defaults to 'true')
   * `auth_cmd_list`: [list] for group-auth or user-auth, authorize only a list
