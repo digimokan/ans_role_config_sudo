@@ -14,8 +14,7 @@ galaxy_info:
 allow_duplicates: false
 
 dependencies:
-  - src: https://github.com/digimokan/ans-role-config-shell
-    version: master
+  - src: https://github.com/digimokan/ans_role_config_shell
     tags:
       - never
 
