@@ -1,8 +1,8 @@
-# ans-role-config-sudo
+# ans_role_config_sudo
 
 Ansible role to configure the system `sudo` utility.
 
-[![Release](https://img.shields.io/github/release/digimokan/ans-role-config-sudo.svg?label=release)](https://github.com/digimokan/ans-role-config-sudo/releases/latest "Latest Release Notes")
+[![Release](https://img.shields.io/github/release/digimokan/ans_role_config_sudo.svg?label=release)](https://github.com/digimokan/ans_role_config_sudo/releases/latest "Latest Release Notes")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?label=license)](LICENSE.md "Project License")
 
 ## Table Of Contents
@@ -33,9 +33,7 @@ Ansible role to configure the system `sudo` utility.
 
    ```yaml
    # requirements.yml
-   - src: https://github.com/digimokan/ans-role-config-sudo
-     version: master
-     name: config-sudo
+   - src: https://github.com/digimokan/ans_role_config_sudo
    ```
 
 2. From the project root directory, install/download the role:
@@ -55,7 +53,7 @@ Ansible role to configure the system `sudo` utility.
      tasks:
        - name: "Configure sudo root-user and general settings"
          include_role:
-           name: config-sudo
+           name: ans_role_config_sudo
          vars:
            set_auth_for_user: "wheel"
            ask_password_timeout: 45
@@ -92,12 +90,12 @@ Define these _optional_ vars for the role:
 
 ## Role Dependencies
 
-* [ans-role-config-shell](https://github.com/digimokan/ans-role-config-shell)
+* [ans_role_config_shell](https://github.com/digimokan/ans_role_config_shell)
 
 ## Contributing
 
 * Feel free to report a bug or propose a feature by opening a new
-  [Issue](https://github.com/digimokan/ans-role-config-sudo/issues).
+  [Issue](https://github.com/digimokan/ans_role_config_sudo/issues).
 * Follow the project's [Contributing](CONTRIBUTING.md) guidelines.
 * Respect the project's [Code Of Conduct](CODE_OF_CONDUCT.md).
 
