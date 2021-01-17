@@ -1,6 +1,6 @@
 - name: "Add sudo command alias for user '{{ user_for_shell_enhancements }}'"
   include_role:
-    name: ans-role-config-shell
+    name: ans_role_config_shell
     tasks_from: inc/add_common_interactive_lines.yml
   vars:
     user_name: "{{ user_for_shell_enhancements }}"
