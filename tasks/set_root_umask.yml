@@ -1,5 +1,5 @@
 - name: "Set sudo-command-umask to 0022 (same as root-user default umask)"
-  include_tasks: func/edit_sudoers_opt.yml
+  ansible.builtin.include_tasks: func/edit_sudoers_opt.yml
   vars:
     description: "set sudo umask 0022 (same as root's) to {{ use_root_umask }}"
     config_lines: >-
@@ -7,7 +7,7 @@
     task_state: "{{ 'present' if use_root_umask else 'absent' }}"
 
 - name: "Make sudo always use its own sudo-command-umask"
-  include_tasks: func/edit_sudoers_opt.yml
+  ansible.builtin.include_tasks: func/edit_sudoers_opt.yml
   vars:
     description: "make sudo always use sudo-cmd-umask to {{ use_root_umask }}"
     config_lines: >-

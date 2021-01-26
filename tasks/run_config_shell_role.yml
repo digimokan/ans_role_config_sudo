@@ -1,5 +1,5 @@
 - name: "Run config_shell role for user '{{ user_for_shell_enhancements }}'"
-  include_role:
+  ansible.builtin.include_role:
     name: ans_role_config_shell
   vars:
     user_name: "{{ user_for_shell_enhancements }}"

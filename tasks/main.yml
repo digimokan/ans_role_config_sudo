@@ -1,37 +1,37 @@
 - name: "Run dependency-role: ans-role-config-shell"
-  include_tasks: run_config_shell_role.yml
+  ansible.builtin.include_tasks: run_config_shell_role.yml
   when: user_for_shell_enhancements is defined
 
 - name: "Install sudo utility"
-  include_tasks: install_sudo.yml
+  ansible.builtin.include_tasks: install_sudo.yml
 
 - name: "Check that 'set_auth_for_group' and 'set_auth_for_user' not both defined"
-  fail:
+  ansible.builtin.fail:
     msg: "'set_auth_for_group' and 'set_auth_for_user' cannot both be defined"
   when: (set_auth_for_group is defined) and
         (set_auth_for_user is defined)
 
 - name: "Grant full/limited sudo authority for group '{{ set_auth_for_group }}'"
-  include_tasks: config_group_auth.yml
+  ansible.builtin.include_tasks: config_group_auth.yml
   when: set_auth_for_group is defined
 
 - name: "Grant full/limited sudo authority for user '{{ set_auth_for_user }}'"
-  include_tasks: config_user_auth.yml
+  ansible.builtin.include_tasks: config_user_auth.yml
   when: set_auth_for_user is defined
 
 - name: "Set wait between sudo ask-password events"
-  include_tasks: config_ask_pswd.yml
+  ansible.builtin.include_tasks: config_ask_pswd.yml
   when: ask_password_timeout is defined
 
 - name: "Set number of minutes to timeout, when waiting for sudo password"
-  include_tasks: config_pswd_prompt.yml
+  ansible.builtin.include_tasks: config_pswd_prompt.yml
   when: password_prompt_timeout_minutes is defined
 
 - name: "Use root-user umask for file creation (not user's umask)"
-  include_tasks: set_root_umask.yml
+  ansible.builtin.include_tasks: set_root_umask.yml
   when: use_root_umask is defined
 
 - name: "Set sudo-alias shell enhancement for user '{{ user_for_shell_enhancements }}'"
-  include_tasks: set_sudo_alias.yml
+  ansible.builtin.include_tasks: set_sudo_alias.yml
   when: user_for_shell_enhancements is defined
 

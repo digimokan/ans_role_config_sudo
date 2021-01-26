@@ -1,5 +1,5 @@
 - name: "Set time between sudo password asks"
-  include_tasks: func/edit_sudoers_opt.yml
+  ansible.builtin.include_tasks: func/edit_sudoers_opt.yml
   vars:
     description: "set password wait-period before ask again"
     config_lines: >-

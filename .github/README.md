@@ -52,7 +52,7 @@ Ansible role to configure the system `sudo` utility.
      connection: local
      tasks:
        - name: "Configure sudo root-user and general settings"
-         include_role:
+         ansible.builtin.include_role:
            name: ans_role_config_sudo
          vars:
            set_auth_for_user: "wheel"
