@@ -7,14 +7,10 @@ galaxy_info:
     - name: Archlinux
       versions:
         - all
+    - name: FreeBSD
+      versions:
+        - all
   galaxy_tags:
     - archlinux
     - sudo
-
-allow_duplicates: false
-
-dependencies:
-  - src: https://github.com/digimokan/ans_role_config_shell
-    tags:
-      - never
 

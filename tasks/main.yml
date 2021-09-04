@@ -1,7 +1,3 @@
-- name: "Run dependency-role: ans-role-config-shell"
-  ansible.builtin.include_tasks: run_config_shell_role.yml
-  when: user_for_shell_enhancements is defined
-
 - name: "Install sudo utility"
   ansible.builtin.include_tasks: install_sudo.yml
 

@@ -8,6 +8,7 @@ Ansible role to configure the system `sudo` utility.
 ## Table Of Contents
 
 * [Purpose](#purpose)
+* [Requirements](#requirements)
 * [Supported Operating Systems](#supported-operating-systems)
 * [Quick Start](#quick-start)
     * [Use From Playbook](#use-from-playbook)
@@ -21,9 +22,15 @@ Ansible role to configure the system `sudo` utility.
 * Configure authorized `sudo` users, groups, etc.
 * Configure general `sudo` command settings.
 
+## Requirements
+
+* Main [ans_role_config_shell](https://github.com/digimokan/ans_role_config_shell)
+  role has already been run, for `user_for_shell_enhancements`.
+
 ## Supported Operating Systems
 
 * Arch Linux.
+* FreeBSD.
 
 ## Quick Start
 
@@ -51,14 +58,15 @@ Ansible role to configure the system `sudo` utility.
    - hosts: localhost
      connection: local
      tasks:
-       - name: "Configure sudo root-user and general settings"
+       - name: "Configure sudo settings, auth, and shell"
          ansible.builtin.include_role:
            name: ans_role_config_sudo
          vars:
-           set_auth_for_user: "wheel"
            ask_password_timeout: 45
            password_prompt_timeout_minutes: 0
            use_root_umask: true
+           set_auth_for_group: "wheel"
+           user_for_shell_enhancements: "admin"
    ```
 
 ## Role Options
