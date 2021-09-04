@@ -7,7 +7,6 @@
     create: yes
     state: "{{ task_state }}"
     owner: "{{ sudoers_file_owner }}"
-    group: "{{ sudoers_file_group }}"
     mode: "{{ sudoers_file_mode }}"
     validate: "{{ sudoers_validate_cmd }}"
   become: true
