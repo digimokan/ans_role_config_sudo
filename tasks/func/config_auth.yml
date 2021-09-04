@@ -13,7 +13,7 @@
   when: auth_cmd_list is defined
 
 - name: "Set '{{ user_or_group_str }}' full/limited auth"
-  ansible.builtin.include_tasks: func/edit_sudoers_opt.yml
+  ansible.builtin.include_tasks: func/edit_sudoers_opt/main.yml
   vars:
     description: "'{{ user_or_group_str }}' auth"
     config_lines: >-

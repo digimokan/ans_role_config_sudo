@@ -1,0 +1,6 @@
+# file path for sudoers config file
+freebsd_sudoers_file_path: "/usr/local/etc/sudoers.d/ansible_cfg"
+
+# file group for sudoers config file (i.e. the primary group for user 'root')
+freebsd_sudoers_file_group: 'wheel'
+

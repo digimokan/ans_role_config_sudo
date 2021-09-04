@@ -1,0 +1,14 @@
+- name: "Edit sudoers opt for Linux"
+  ansible.builtin.include_tasks: edit_opt.yml
+  vars:
+    sudoers_file_path: "{{ linux_sudoers_file_path }}"
+    sudoers_file_group: "{{ linux_sudoers_file_group }}"
+  when: ansible_system == "Linux"
+
+- name: "Edit sudoers opt for FreeBSD"
+  ansible.builtin.include_tasks: edit_opt.yml
+  vars:
+    sudoers_file_path: "{{ freebsd_sudoers_file_path }}"
+    sudoers_file_group: "{{ freebsd_sudoers_file_group }}"
+  when: ansible_os_family == "FreeBSD"
+

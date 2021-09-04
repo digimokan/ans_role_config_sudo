@@ -1,12 +1,13 @@
 - name: "{{ sudoers_d_file_path }}: {{ description }}"
   ansible.builtin.blockinfile:
-    path: "{{ sudoers_d_file_path }}"
+    path: "{{ sudoers_file_path }}"
     insertafter: EOF
     block: "{{ config_lines }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: {{ description }}"
     create: yes
     state: "{{ task_state }}"
     owner: "{{ sudoers_file_owner }}"
+    group: "{{ sudoers_file_group }}"
     mode: "{{ sudoers_file_mode }}"
     validate: "{{ sudoers_validate_cmd }}"
   become: true
