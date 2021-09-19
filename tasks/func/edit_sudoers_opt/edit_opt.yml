@@ -1,4 +1,4 @@
-- name: "{{ sudoers_d_file_path }}: {{ description }}"
+- name: "{{ sudoers_file_path }}: {{ description }}"
   ansible.builtin.blockinfile:
     path: "{{ sudoers_file_path }}"
     insertafter: EOF
