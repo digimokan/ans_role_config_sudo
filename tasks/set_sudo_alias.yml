@@ -1,9 +1,0 @@
-- name: "Add sudo command alias for user '{{ user_for_shell_enhancements }}'"
-  ansible.builtin.include_role:
-    name: ans_role_config_shell
-    tasks_from: inc/add_common_interactive_lines.yml
-  vars:
-    user_name: "{{ user_for_shell_enhancements }}"
-    description: "sudo command alias for '{{ user_for_shell_enhancements }}'"
-    config_lines: "alias sudo='sudo '"
-

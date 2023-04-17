@@ -8,12 +8,10 @@ Ansible role to configure the system `sudo` utility.
 ## Table Of Contents
 
 * [Purpose](#purpose)
-* [Requirements](#requirements)
 * [Supported Operating Systems](#supported-operating-systems)
 * [Quick Start](#quick-start)
     * [Use From Playbook](#use-from-playbook)
 * [Role Options](#role-options)
-* [Role Dependencies](#role-dependencies)
 * [Contributing](#contributing)
 
 ## Purpose
@@ -21,11 +19,6 @@ Ansible role to configure the system `sudo` utility.
 * Install `sudo`.
 * Configure authorized `sudo` users, groups, etc.
 * Configure general `sudo` command settings.
-
-## Requirements
-
-* Main [ans_role_config_shell](https://github.com/digimokan/ans_role_config_shell)
-  role has already been run, for `user_for_shell_enhancements`.
 
 ## Supported Operating Systems
 
@@ -66,7 +59,6 @@ Ansible role to configure the system `sudo` utility.
            password_prompt_timeout_minutes: 0
            use_root_umask: true
            set_auth_for_group: "wheel"
-           user_for_shell_enhancements: "admin"
    ```
 
 ## Role Options
@@ -93,12 +85,6 @@ Define these _optional_ vars for the role:
     minutes (0 for never)
   * `use_root_umask`: [boolean] make sudo use root-user umask (not user's) for
     file create
-  * `user_for_shell_enhancements`: [string] user-name, to set up user-specific
-    alias/etc shell enhancements
-
-## Role Dependencies
-
-* [ans_role_config_shell](https://github.com/digimokan/ans_role_config_shell)
 
 ## Contributing
 

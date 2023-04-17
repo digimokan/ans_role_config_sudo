@@ -27,7 +27,3 @@
   ansible.builtin.include_tasks: set_root_umask.yml
   when: use_root_umask is defined
 
-- name: "Set sudo-alias shell enhancement for user '{{ user_for_shell_enhancements }}'"
-  ansible.builtin.include_tasks: set_sudo_alias.yml
-  when: user_for_shell_enhancements is defined
-
