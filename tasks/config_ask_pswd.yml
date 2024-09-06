@@ -3,5 +3,7 @@
   vars:
     description: "set password wait-period before ask again"
     config_lines: >-
-      Defaults timestamp_timeout={{ ask_password_timeout }}
+      Defaults timestamp_timeout={{ timeout }}
+    timeout_temp: "{{ '0' if (ask_password_timeout == 'always') else ask_password_timeout }}"
+    timeout: "{{ '-1' if (timeout_temp == 'ask_once') else timeout_temp }}"
 

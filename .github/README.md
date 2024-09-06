@@ -80,7 +80,8 @@ Define these _optional_ vars for the role:
   * `req_sudo_password`: [boolean] require sudo password for group/user
     (defaults to 'true')
   * `ask_password_timeout`: [int] number of minutes sudo will wait between
-    passwd asks
+    passwd asks. Set to `always` to always ask. Set to `ask_once` to ask the
+    first time, and never again.
   * `password_prompt_timeout_minutes`: [int] on ask, timeout and abort after X
     minutes (0 for never)
   * `use_root_umask`: [boolean] make sudo use root-user umask (not user's) for
