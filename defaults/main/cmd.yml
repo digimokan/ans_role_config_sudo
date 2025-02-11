@@ -1,0 +1,3 @@
+# main command to run to execute sudo
+sudo_main_cmd: 'sudo'
+
