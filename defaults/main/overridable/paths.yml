@@ -5,5 +5,5 @@ cfg_sudo_sudoers_file_owner: 'root'
 cfg_sudo_sudoers_file_mode: '440'
 
 # temporary file to store working sudoers settings
-cfg_sudo_temp_sudoers_file_path: '/temp/sudoers/ansible_cfg'
+cfg_sudo_temp_sudoers_file_path: '/tmp/sudoers/ansible_cfg'
 
