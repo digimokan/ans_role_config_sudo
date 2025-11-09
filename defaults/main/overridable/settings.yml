@@ -1,0 +1,11 @@
+# Number of minutes sudo will wait between passwd asks.
+# Set to `always` to always ask.
+# Set to `ask_once` to ask the first time, and never again.
+cfg_sudo_ask_password_timeout: 120
+
+# on asking for passwd, timeout and abort after X minutes (0 for never)
+cfg_sudo_password_prompt_timeout_minutes: 5
+
+# make sudo use root-user umask (not user's) for file create
+cfg_sudo_use_root_umask: false
+

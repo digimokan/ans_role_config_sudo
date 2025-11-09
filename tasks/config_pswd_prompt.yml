@@ -1,7 +1,0 @@
-- name: "Set password-prompt timeout"
-  ansible.builtin.include_tasks: func/edit_sudoers_opt/main.yml
-  vars:
-    description: "set timeout-quit after asking for password"
-    config_lines: >-
-      Defaults passwd_timeout={{ password_prompt_timeout_minutes }}
-

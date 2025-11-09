@@ -51,41 +51,32 @@ Ansible role to configure the system `sudo` utility.
    - hosts: localhost
      connection: local
      tasks:
-       - name: "Configure sudo settings, auth, and shell"
+       - name: "Configure sudo settings and sudo permissions for users and groups"
          ansible.builtin.include_role:
            name: ans_role_config_sudo
          vars:
-           ask_password_timeout: 45
-           password_prompt_timeout_minutes: 0
-           use_root_umask: true
-           set_auth_for_group: "wheel"
+           cfg_sudo_ask_password_timeout: 45
+           cfg_sudo_password_prompt_timeout_minutes: 0
+           cfg_sudo_sudoers_rules:
+             - sudoer_name: "user2"
+               # Note: either 'user' or 'group':
+               sudoer_type: "user"
+               allow_run_on_host: "ALL"
+               allow_run_as_user: "ALL"
+               # Note: may be list of commands as well:
+               allow_commands: "ALL"
+               req_passwd: false
    ```
 
 ## Role Options
 
-See the role `defaults` file, for overridable vars:
+Vars with default values, which can be overridden in the playbook:
 
-  * [defaults/main.yml](../defaults/main.yml)
+  * [overridable](../defaults/main/overridable/)
 
-Define these _optional_ vars for the role:
+Vars defined by this role, exported with `public: true`, for use in other roles:
 
-  * `set_auth_for_group`: [boolean] a group to grant full sudo authorization to
-    (_NOTE_: mutually exclusive with `set_auth_for_user`)
-  * `set_auth_for_user`: [boolean] a user to grant full sudo authorization to
-    (_NOTE_: mutually exclusive with `set_auth_for_group`)
-  * `enable_sudo_auth`: [boolean] if 'false', will disable all sudo auth for the
-    user/group (defaults to 'true')
-  * `auth_cmd_list`: [list] for group-auth or user-auth, authorize only a list
-    of cmds
-  * `req_sudo_password`: [boolean] require sudo password for group/user
-    (defaults to 'true')
-  * `ask_password_timeout`: [int] number of minutes sudo will wait between
-    passwd asks. Set to `always` to always ask. Set to `ask_once` to ask the
-    first time, and never again.
-  * `password_prompt_timeout_minutes`: [int] on ask, timeout and abort after X
-    minutes (0 for never)
-  * `use_root_umask`: [boolean] make sudo use root-user umask (not user's) for
-    file create
+  * [export vars](../defaults/main/export/main.yml)
 
 ## Contributing
 

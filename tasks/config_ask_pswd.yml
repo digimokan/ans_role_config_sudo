@@ -1,9 +1,0 @@
-- name: "Set time between sudo password asks"
-  ansible.builtin.include_tasks: func/edit_sudoers_opt/main.yml
-  vars:
-    description: "set password wait-period before ask again"
-    config_lines: >-
-      Defaults timestamp_timeout={{ timeout_val }}
-    timeout_temp: "{{ '0' if (ask_password_timeout == 'always') else ask_password_timeout }}"
-    timeout_val: "{{ '-1' if (timeout_temp == 'ask_once') else timeout_temp }}"
-

@@ -1,9 +1,0 @@
-# file owner for sudoers config file
-sudoers_file_owner: 'root'
-
-# file mode for sudoers config file
-sudoers_file_mode: '440'
-
-# command to run to check that sudoers config file is in valid state
-sudoers_validate_cmd: "visudo --check --file=%s"
-

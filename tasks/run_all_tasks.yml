@@ -1,0 +1,6 @@
+- name: "Install sudo utility"
+  ansible.builtin.include_tasks: install/main.yml
+
+- name: "Configure general sudo settings and user sudo settings"
+  ansible.builtin.include_tasks: configure/main.yml
+

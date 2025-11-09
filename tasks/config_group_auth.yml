@@ -1,5 +1,0 @@
-- name: "Set group '{{ set_auth_for_group }}' auth"
-  ansible.builtin.include_tasks: func/config_auth.yml
-  vars:
-    user_or_group_str: "%{{ set_auth_for_group }}"
-

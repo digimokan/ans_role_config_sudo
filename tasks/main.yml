@@ -1,29 +1,14 @@
-- name: "Install sudo utility"
-  ansible.builtin.include_tasks: install_sudo.yml
+- name: "Run all role tasks for Linux"
+  ansible.builtin.include_tasks: run_all_tasks.yml
+  vars:
+    cfg_sudo_system_sudoers_file_path: "{{ cfg_sudo_linux_sudoers_file_path }}"
+    cfg_sudo_system_sudoers_file_group: "{{ cfg_sudo_linux_sudoers_file_group }}"
+  when: ansible_system == "Linux"
 
-- name: "Check that 'set_auth_for_group' and 'set_auth_for_user' not both defined"
-  ansible.builtin.fail:
-    msg: "'set_auth_for_group' and 'set_auth_for_user' cannot both be defined"
-  when: (set_auth_for_group is defined) and
-        (set_auth_for_user is defined)
-
-- name: "Grant full/limited sudo authority for group '{{ set_auth_for_group }}'"
-  ansible.builtin.include_tasks: config_group_auth.yml
-  when: set_auth_for_group is defined
-
-- name: "Grant full/limited sudo authority for user '{{ set_auth_for_user }}'"
-  ansible.builtin.include_tasks: config_user_auth.yml
-  when: set_auth_for_user is defined
-
-- name: "Set wait between sudo ask-password events"
-  ansible.builtin.include_tasks: config_ask_pswd.yml
-  when: ask_password_timeout is defined
-
-- name: "Set number of minutes to timeout, when waiting for sudo password"
-  ansible.builtin.include_tasks: config_pswd_prompt.yml
-  when: password_prompt_timeout_minutes is defined
-
-- name: "Use root-user umask for file creation (not user's umask)"
-  ansible.builtin.include_tasks: set_root_umask.yml
-  when: use_root_umask is defined
+- name: "Run all role tasks for FreeBSD"
+  ansible.builtin.include_tasks: run_all_tasks.yml
+  vars:
+    cfg_sudo_system_sudoers_file_path: "{{ cfg_sudo_freebsd_sudoers_file_path }}"
+    cfg_sudo_system_sudoers_file_group: "{{ cfg_sudo_freebsd_sudoers_file_group }}"
+  when: ansible_os_family == "FreeBSD"
 
