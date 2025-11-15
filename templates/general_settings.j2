@@ -8,8 +8,8 @@ Defaults timestamp_timeout={{ ask_passwd_timeout_minutes }}
 Defaults passwd_timeout={{ cfg_sudo_password_prompt_timeout_minutes }}
 
 # set sudo umask 0022 (same as root's)
-{{ '# ' if cfg_sudo_use_root_umask else '' }}Defaults umask=0022
+{{ '# ' if not cfg_sudo_use_root_umask else '' }}Defaults umask=0022
 
 # make sudo always use sudo-cmd-umask
-{{ '# ' if cfg_sudo_use_root_umask else '' }}Defaults umask_override
+{{ '# ' if not cfg_sudo_use_root_umask else '' }}Defaults umask_override
 
