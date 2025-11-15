@@ -1,0 +1,10 @@
+- name: "Gather list of pre-existing files in '{{ cfg_sudo_system_sudoers_d_dir }}'"
+  ansible.builtin.find:
+    paths: "{{ cfg_sudo_system_sudoers_d_dir }}"
+    patterns: "*"
+    file_type: file
+  register: existing_sudoers_files
+  become: true
+  become_user: root
+  changed_when: false
+

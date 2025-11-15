@@ -1,0 +1,34 @@
+- name: "Configure general sudo settings in '{{ general_settings_path }}'"
+  ansible.builtin.template:
+    dest: "{{ general_settings_path }}"
+    src: "general_settings.j2"
+    owner: "{{ cfg_sudo_sudoers_file_owner }}"
+    group: "{{ cfg_sudo_system_sudoers_file_group}}"
+    mode: "{{ cfg_sudo_sudoers_file_mode }}"
+    force: true
+    validate: "visudo --check --file=\"%s\""
+  vars:
+    general_settings_path: "{{ cfg_sudo_system_sudoers_d_dir }}/{{ cfg_sudo_general_settings_label }}"
+    ask_passwd_timeout_temp: "{{ '0' if (cfg_sudo_ask_password_timeout == 'always') else cfg_sudo_ask_password_timeout }}"
+    ask_passwd_timeout_minutes: "{{ '-1' if (ask_passwd_timeout_temp == 'ask_once') else ask_passwd_timeout_temp }}"
+  become: true
+  become_user: root
+
+- name: "Emplace cfg_sudo_sudoers_rules files '{{ cfg_sudo_system_sudoers_d_dir }}'"
+  community.general.sudoers:
+    name: "{{ sudoer.label }}"
+    sudoers_path: "{{ cfg_sudo_system_sudoers_d_dir }}"
+    group: "{{ sudoer.sudoer_name if (sudoer.sudoer_type == 'group') | bool else omit }}"
+    user: "{{ sudoer.sudoer_name if (sudoer.sudoer_type == 'user') | bool else omit }}"
+    host: "{{ sudoer.allow_run_on_host }}"
+    runas: "{{ sudoer.allow_run_as_user }}"
+    commands: "{{ sudoer.allow_commands }}"
+    nopassword: "{{ not sudoer.req_passwd }}"
+    state: present
+    validation: required
+  loop: "{{ cfg_sudo_sudoers_rules }}"
+  loop_control:
+    loop_var: sudoer
+  become: true
+  become_user: root
+

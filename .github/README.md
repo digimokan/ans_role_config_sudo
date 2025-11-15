@@ -58,14 +58,15 @@ Ansible role to configure the system `sudo` utility.
            cfg_sudo_ask_password_timeout: 45
            cfg_sudo_password_prompt_timeout_minutes: 0
            cfg_sudo_sudoers_rules:
-             - sudoer_name: "user2"
+             - label: "ansible_user2_all_auths"
+               sudoer_name: "user2"
                # Note: either 'user' or 'group':
                sudoer_type: "user"
                allow_run_on_host: "ALL"
                allow_run_as_user: "ALL"
                # Note: may be list of commands as well:
                allow_commands: "ALL"
-               req_passwd: false
+               req_passwd: true
    ```
 
 ## Role Options

@@ -1,0 +1,13 @@
+- name: "Remove any non-ansible-managed files in '{{ cfg_sudo_system_sudoers_d_dir }}'"
+  ansible.builtin.file:
+    path: "{{ existing_file.path }}"
+    state: absent
+  loop: "{{ existing_sudoers_files.files }}"
+  loop_control:
+    loop_var: existing_file
+  become: true
+  become_user: root
+  when: >
+    (existing_file.path | basename != cfg_sudo_general_settings_label) and
+    (existing_file.path | basename not in cfg_sudo_sudoers_rules | map(attribute='label'))
+

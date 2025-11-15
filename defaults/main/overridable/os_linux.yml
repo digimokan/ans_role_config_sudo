@@ -1,5 +1,5 @@
-# file path for sudoers config file
-cfg_sudo_linux_sudoers_file_path: "/etc/sudoers.d/ansible_cfg"
+# path to system sudoers.d directory
+cfg_sudo_linux_sudoers_d_dir: "/etc/sudoers.d"
 
 # file group for sudoers config file (i.e. the primary group for user 'root')
 cfg_sudo_linux_sudoers_file_group: 'root'

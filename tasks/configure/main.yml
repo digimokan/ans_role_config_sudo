@@ -1,45 +1,9 @@
-- name: "Create sudoers temp file directory '{{ cfg_sudo_temp_sudoers_file_path | dirname }}'"
-  ansible.builtin.file:
-    path: "{{ cfg_sudo_temp_sudoers_file_path | dirname }}"
-    state: directory
-  changed_when: false
+- name: "Gather existing files in '{{ cfg_sudo_system_sudoers_d_dir }}'"
+  ansible.builtin.include_tasks: gather_existing_files.yml
 
-- name: "Configure general sudo settings in temp file '{{ cfg_sudo_temp_sudoers_file_path }}'"
-  ansible.builtin.template:
-    dest: "{{ cfg_sudo_temp_sudoers_file_path }}"
-    src: "ansible_cfg.j2"
-    force: true
-  vars:
-    ask_passwd_timeout_temp: "{{ '0' if (cfg_sudo_ask_password_timeout == 'always') else cfg_sudo_ask_password_timeout }}"
-    ask_passwd_timeout_minutes: "{{ '-1' if (ask_passwd_timeout_temp == 'ask_once') else ask_passwd_timeout_temp }}"
-  changed_when: false
+- name: "Emplace rules files in '{{ cfg_sudo_system_sudoers_d_dir }}'"
+  ansible.builtin.include_tasks: emplace_rules_files.yml
 
-- name: "Emplace sudoers rules in temp file '{{ cfg_sudo_temp_sudoers_file_path }}'"
-  community.general.sudoers:
-    name: "{{ cfg_sudo_temp_sudoers_file_path | basename }}"
-    sudoers_path: "{{ cfg_sudo_temp_sudoers_file_path | dirname }}"
-    group: "{{ sudoer.sudoer_name if (sudoer.sudoer_type == 'group') | bool else omit }}"
-    user: "{{ sudoer.sudoer_name if (sudoer.sudoer_type == 'user') | bool else omit }}"
-    host: "{{ sudoer.allow_run_on_host }}"
-    runas: "{{ sudoer.allow_run_as_user }}"
-    commands: "{{ sudoer.allow_commands }}"
-    nopassword: "{{ not sudoer.req_passwd }}"
-    state: present
-    validation: required
-  loop: "{{ cfg_sudo_sudoers_rules }}"
-  loop_control:
-    loop_var: sudoer
-  changed_when: false
-  when: cfg_sudo_sudoers_rules | length > 0
-
-# - name: "Use temp file to overwrite actual sudoers file at '{{ cfg_sudo_system_sudoers_file_path }}'"
-#   ansible.builtin.copy:
-#     dest: "{{ cfg_sudo_system_sudoers_file_path }}"
-#     src: "{{ cfg_sudo_temp_sudoers_file_path }}"
-#     owner: "{{ cfg_sudo_sudoers_file_owner }}"
-#     group: "{{ cfg_sudo_system_sudoers_file_group}}"
-#     mode: "{{ cfg_sudo_sudoers_file_mode }}"
-#     force: true
-#   become: true
-#   become_user: root
+- name: "Remove old/extra files in '{{ cfg_sudo_system_sudoers_d_dir }}'"
+  ansible.builtin.include_tasks: rem_non_ans_files.yml
 
